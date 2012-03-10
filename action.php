@@ -1,7 +1,7 @@
 <?php
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Esther Brunner <wikidesign@gmail.com>
+ * @author     Frank Schiebel <frank@linuxmuster.net>
  */
 
 // must be run within Dokuwiki
