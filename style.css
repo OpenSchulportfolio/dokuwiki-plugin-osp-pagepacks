@@ -1,0 +1,17 @@
+div.filelist-toolbar {
+    margin-bottom: 3px;
+}
+
+div.filelist-toolbar a.filelist-editfiles {
+    padding: 2px 0 4px 20px;
+    margin-right: 8px;
+    text-align: left;
+    color: #454545 !important;
+    background: transparent url("img/folder.png") top left no-repeat;
+}
+a.filelist-refresh {
+    padding: 2px 0 2px 20px;
+    text-align: left;
+    color: #454545 !important;
+    background: transparent url("img/reload.png") top left no-repeat;
+}
