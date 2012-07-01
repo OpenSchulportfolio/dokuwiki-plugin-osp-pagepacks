@@ -1,9 +1,9 @@
 <?php
 /**
- * Filelist Plugin: Lists files matching a given glob pattern.
+ * Pagepacks Plugin: Initial installation of page structure for openschulportfolio
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Gina Haeussge <osd@foosel.net>
+ * @author     Frank Schiebel <frank@linuxmuster.net>
  */
 
 if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
@@ -44,7 +44,7 @@ class syntax_plugin_pagepacks extends DokuWiki_Syntax_Plugin {
             'date'   => '2012-03-11',
             'name'   => 'Pagepacks Plugin',
             'desc'   => 'Plugin to unpack pagepacks',
-            'url'    => 'http://',
+            'url'    => 'http://www.openschulportfolio.de',
         );
     }
 
@@ -79,9 +79,8 @@ class syntax_plugin_pagepacks extends DokuWiki_Syntax_Plugin {
 
         list($type,$ext) = $data;
         if ($mode == 'xhtml') {
-            $renderer->doc .= $type . $ext . $this->packdir;
             $renderer->doc .=$this->_showform();
-   
+
             return true;
         }
         return false;
@@ -136,8 +135,6 @@ class syntax_plugin_pagepacks extends DokuWiki_Syntax_Plugin {
     }
 
     /**
-     * Show the form to start a new discussion thread
-     *
      * FIXME use DokuWikis inc/form.php for this?
      */
     function _showform() {
@@ -148,23 +145,28 @@ class syntax_plugin_pagepacks extends DokuWiki_Syntax_Plugin {
         // keep going until all files in directory have been read
         while ($file = readdir($handler)) {
             if (preg_match ("/.zip$/i", $file)) {
-                $formselects .= '<input type="radio" name="packzipfile" value=' . $file . '> ' . $file . '<br>';
+                $fileinfo = $this->packdir . $file . ".info";
+                if(file_exists($fileinfo)) {
+                    $info = io_readfile($fileinfo);
+                } else {
+                    $info = "";
+                }
+                $formselects .= '<p class="radioleft"><input type="radio" name="packzipfile" value=' . $file . '> ' . $file . '<span>' . $info . '</span>' . '</p>';
                 $found = true;
             }
         }
         closedir($handler);
 
-
-        $ret = '<div>'.DOKU_LF.
-            '<form id="pagepacks_form"  method="post" action="'.script().'" accept-charset="'.$lang['encoding'].'">'.DOKU_LF.
-            DOKU_TAB.'<fieldset>'.DOKU_LF.
-            DOKU_TAB.DOKU_TAB.'<legend> '.$this->getLang('pagepacks').': </legend>'.DOKU_LF.
-            DOKU_TAB.DOKU_TAB.'<input type="hidden" name="do" value="unzip" />'.DOKU_LF;
+        $ret  = '<div>'.DOKU_LF;
+        $ret .= '<form id="pagepack"  method="post" action="'.script().'" accept-charset="'.$lang['encoding'].'">'.DOKU_LF;
+        $ret .= DOKU_TAB.'<fieldset>'.DOKU_LF;
+        $ret .= DOKU_TAB.DOKU_TAB.'<legend> '.$this->getLang('pagepacks').': </legend>'.DOKU_LF;
+        $ret .= DOKU_TAB.DOKU_TAB.'<input type="hidden" name="do" value="unzip" />'.DOKU_LF;
         $ret .= $formselects;
-        $ret .= DOKU_TAB.DOKU_TAB.'<input class="button" type="submit" value="'.$this->getLang('btn_unzip').'" tabindex="5" />'.DOKU_LF.
-            DOKU_TAB.'</fieldset>'.DOKU_LF.
-            '</form>'.DOKU_LF.
-            '</div>'.DOKU_LF;
+        $ret .= DOKU_TAB.DOKU_TAB.'<input class="button" type="submit" value="'.$this->getLang('btn_unzip').'" tabindex="5" />'.DOKU_LF;
+        $ret .= DOKU_TAB.'</fieldset>'.DOKU_LF;
+        $ret .= '</form>'.DOKU_LF;
+        $ret .= '</div>'.DOKU_LF;
         return $ret;
     }
 

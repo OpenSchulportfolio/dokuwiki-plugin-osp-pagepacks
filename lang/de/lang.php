@@ -7,6 +7,6 @@
  * @author Frank Schiebel <frank@linuxmuster.net>
  */
 
-$lang['pagepacks'] = "Seitepakete";
+$lang['pagepacks'] = "Verfügbare Seitenpakete";
 $lang['btn_unzip'] = "Auspacken";
 

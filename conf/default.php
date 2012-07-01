@@ -1,6 +1,6 @@
 <?php
 /**
- * Options for the filelist plugin
+ * Options for the pagepacks plugin
  */
 
 $conf['allowed_absolute_paths'] = DOKU_INC;

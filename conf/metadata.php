@@ -1,7 +1,7 @@
 <?php
 /**
  * Metadata for configuration manager plugin
- * Additions for the filelist plugin
+ * Additions for the pagepacks plugin
  *
  * @author Frank Schiebel <frank@linuxmuster.net>
  */
