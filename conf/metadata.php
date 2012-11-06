@@ -6,4 +6,4 @@
  * @author Frank Schiebel <frank@linuxmuster.net>
  */
 
-$meta['pagepacks_src'] = array('');
+$meta['pagepacks_src'] = array('string');

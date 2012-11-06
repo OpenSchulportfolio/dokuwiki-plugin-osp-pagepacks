@@ -40,7 +40,9 @@ class action_plugin_pagepacks extends DokuWiki_Action_Plugin {
     /**
      */
     function handle_act_preprocess(&$event, $param) {
+        global $ID;
         if ($event->data != 'unzip') return;
+        if (auth_quickaclcheck($ID) < AUTH_ADMIN) return;
 
         // we can handle it -> prevent others
         $event->stopPropagation();
