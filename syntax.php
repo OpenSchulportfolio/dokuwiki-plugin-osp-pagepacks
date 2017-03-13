@@ -60,10 +60,10 @@ class syntax_plugin_pagepacks extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-   function handle($match, $state, $pos, &$handler) {
+   function handle($match, $state, $pos, Doku_Handler $handler) {
 
         $match = substr($match, 2, -2);
-        list($type, $ext) = split('>', $match, 2);
+        list($type, $ext) = explode('>', $match, 2);
 
         return array($type,$ext);
     }
@@ -71,7 +71,7 @@ class syntax_plugin_pagepacks extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
         global $conf;
 
         // disable caching

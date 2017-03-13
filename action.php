@@ -29,7 +29,7 @@ class action_plugin_pagepacks extends DokuWiki_Action_Plugin {
     /**
      * register the eventhandlers
      */
-    function register(&$contr) {
+    function register(Doku_Event_Handler $contr) {
         $contr->register_hook('ACTION_ACT_PREPROCESS',
                             'BEFORE',
                             $this,
@@ -39,7 +39,7 @@ class action_plugin_pagepacks extends DokuWiki_Action_Plugin {
 
     /**
      */
-    function handle_act_preprocess(&$event, $param) {
+    function handle_act_preprocess(Doku_Event $event, $param) {
         global $ID;
         if ($event->data != 'unzip') return;
         if (auth_quickaclcheck($ID) < AUTH_ADMIN) return;
@@ -90,7 +90,7 @@ class action_plugin_pagepacks extends DokuWiki_Action_Plugin {
 
         // need to source plugin manager because otherwise the ZipLib doesn't work
         // FIXME fix ZipLib.class.php
-        require_once(DOKU_INC.'lib/plugins/plugin/admin.php');
+        //require_once(DOKU_INC.'lib/plugins/plugin/admin.php');
 
         // decompression library doesn't like target folders ending in "/"
         if(substr($target, -1) == "/") $target = substr($target, 0, -1);
