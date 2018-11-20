@@ -1,0 +1,6 @@
+====== Seitenpaket Installieren ======
+
+Hier finden Sie die installierbaren Seitenpakete. Sie können weitere Seitenpakete im Namensraum ''%s'' hochladen.
+
+Alle lokal vorhandenen Dateien die sich auch im zu installierenden Seitenpaket befinden, werden durch die Paketversion überschrieben!
+

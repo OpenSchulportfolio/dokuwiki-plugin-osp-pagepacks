@@ -1,0 +1,6 @@
+author Frank Schiebel
+email  frank@linuxmuster.net
+date   2018-11-20
+name   Page Pack Plugin
+desc   Plugin to unpack page packs
+url    http://www.openschulportfolio.de

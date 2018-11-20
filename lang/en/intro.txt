@@ -1,0 +1,6 @@
+====== Install Page Pack ======
+
+Below is a selection of available page packs to install. You can upload additional page packs in the ''%s'' namespace.
+
+Any locally existing file that exists in the page pack you install, will be overrriden by the pack's version!
+
