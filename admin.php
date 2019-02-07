@@ -67,7 +67,7 @@ class admin_plugin_pagepacks extends DokuWiki_Admin_Plugin
     }
 
     /**
-     * @param $pack
+     * @param string $pack
      * @throws \splitbrain\PHPArchive\ArchiveIOException
      */
     protected function installPack($pack)
@@ -88,6 +88,10 @@ class admin_plugin_pagepacks extends DokuWiki_Admin_Plugin
         $zip->open($file);
         $zip->extract($target);
         $zip->close();
+
+        // refresh cache
+        // FIXME, it would be better to update the timestamps of the extracted files, but that's currently not possible
+        @touch(DOKU_CONF . 'local.php');
     }
 
     /**
